@@ -79,3 +79,4 @@ module soft_gtv(
 	    if (rst) gtv_cnt_ff <= 8'b0;
 		else gtv_cnt_ff <= gtv_cnt;
 	end
+endmodule
