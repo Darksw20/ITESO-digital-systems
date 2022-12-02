@@ -24,10 +24,11 @@ module full_adder_4b(
     input [3:0] a, b,
     input ci,
     output [3:0] s,
-    output co
+    output co4
     );
-    full_adder fa01(.a(a[0]),.b(b[0]),.ci(ci),.s(s[0]),.co(ci));
-    full_adder fa02(.a(a[0]),.b(b[0]),.ci(ci));
-    full_adder fa03(.a(a[0]),.b(b[0]),.ci(ci));
-    full_adder fa04(.a(a[0]),.b(b[0]),.ci(ci));
+    wire co1,co2,co3;
+    full_adder fa01(.a(a[0]),.b(b[0]),.ci(ci),.s(s[0]),.co(co1));
+    full_adder fa02(.a(a[1]),.b(b[1]),.ci(co1),.s(s[1]),.co(co2));
+    full_adder fa03(.a(a[2]),.b(b[2]),.ci(co2),.s(s[2]),.co(co3));
+    full_adder fa04(.a(a[3]),.b(b[3]),.ci(co3),.s(s[3]),.co(co4));
 endmodule
