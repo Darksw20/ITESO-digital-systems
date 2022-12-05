@@ -20,7 +20,7 @@
 //////////////////////////////////////////////////////////////////////////////////
 module soft_gtv(
     input rst,
-	 input clk,
+	input clk,
     input spd_btn,
     input [2:0] mode,
     input evnt,
