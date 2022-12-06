@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 05.12.2022 07:22:51
+// Create Date: 04.10.2022 08:44:29
 // Design Name: 
-// Module Name: sum_rest
+// Module Name: mux_in_time_4x4
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,28 +20,13 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module sum_rest(
-    input [3:0] a,b,
-    input sum_rest,
+module adder_subs_4b(
+    input [4:0] dato0,
+    input [4:0] dato1,
+    input [4:0] dato2,
+    input [4:0] dato3,
     input clk,
+    output [3:0] segm,
+    output [3:0] transistor
     );
-    wire [3:0] out;
-    wire [3:0] co;
-        
-    adder_subs i_adder_subs(
-        .a(a),
-        .b(b),
-        .sel(sum_rest),
-        .s(out),
-        .co(co[0])
-    );
-
-    controller_4_display i_controller_4_display(
-        .a(a),
-        .b(b),
-        .d(out),
-        .c(co),
-        .clk(clk)
-    );
-    
 endmodule

@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 05.12.2022 07:22:51
+// Create Date: 04.10.2022 08:41:39
 // Design Name: 
-// Module Name: sum_rest
+// Module Name: adder_subs
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,28 +20,17 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module sum_rest(
+module adder_subs(
     input [3:0] a,b,
-    input sum_rest,
-    input clk,
+    input sel,
+    output [3:0] s,
+    output co
     );
-    wire [3:0] out;
-    wire [3:0] co;
-        
-    adder_subs i_adder_subs(
-        .a(a),
-        .b(b),
-        .sel(sum_rest),
-        .s(out),
-        .co(co[0])
-    );
-
-    controller_4_display i_controller_4_display(
-        .a(a),
-        .b(b),
-        .d(out),
-        .c(co),
-        .clk(clk)
-    );
+    wire b_in;
+    mux_4_1_4b mux(.a(b),.b(~b),.sel(sel),.z(b_in));
+    
+    full_adder_4b fa(.a(a),.b(b_in),.ci(sel),.s(s));
+    
+    
     
 endmodule

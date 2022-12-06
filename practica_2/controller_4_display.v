@@ -5,7 +5,7 @@
 // 
 // Create Date: 05.12.2022 07:22:51
 // Design Name: 
-// Module Name: sum_rest_disp_p1
+// Module Name: controller_4_display
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,27 +20,15 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module sum_rest_disp_p1(
-    input [3:0] a,
-    input [3:0] b,
-    input sum_rest,
+module controller_4_display(
+    input [3:0] a,b,c,d,
     input clk,
     output [6:0] disp,
     output [3:0] transistor
     );
-    wire [6:0] count;
-    wire [3:0] out;
-    wire [3:0] co;
+    wire [7:0] count;
     wire mux_disp;
-        
-    adder_subs i_adder_subs(
-        .a(a),
-        .b(b),
-        .sel(sum_rest),
-        .s(out),
-        .co(co[0])
-    );
-    
+      
     decoder_7seg_4b i_decoder(
         .in(mux_disp),
         .out(disp)
@@ -58,8 +46,8 @@ module sum_rest_disp_p1(
     mux_4_1_4b i_mux(
         .a(a),
         .b(b),
-        .c(co),
-        .d(out),
+        .c(c),
+        .d(d),
         .sel(count[1:0]),
         .z(mux_disp)
     );

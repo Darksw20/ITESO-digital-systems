@@ -5,7 +5,7 @@
 // 
 // Create Date: 05.12.2022 07:22:51
 // Design Name: 
-// Module Name: sum_rest
+// Module Name: alu
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,20 +20,20 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module sum_rest(
+module alu_practica_2(
     input [3:0] a,b,
-    input sum_rest,
+    input [2:0]sel,
     input clk,
     );
     wire [3:0] out;
-    wire [3:0] co;
+    wire [7:0] flags;
         
-    adder_subs i_adder_subs(
+    alu i_alu(
         .a(a),
         .b(b),
-        .sel(sum_rest),
+        .sel(sel),
         .s(out),
-        .co(co[0])
+        .flags(flags)
     );
 
     controller_4_display i_controller_4_display(

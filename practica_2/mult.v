@@ -5,7 +5,7 @@
 // 
 // Create Date: 05.12.2022 07:22:51
 // Design Name: 
-// Module Name: sum_rest
+// Module Name: mult
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,28 +20,11 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module sum_rest(
-    input [3:0] a,b,
-    input sum_rest,
-    input clk,
-    );
-    wire [3:0] out;
-    wire [3:0] co;
-        
-    adder_subs i_adder_subs(
-        .a(a),
-        .b(b),
-        .sel(sum_rest),
-        .s(out),
-        .co(co[0])
+module mult(
+    input signed [3:0] a,b,
+    output signed [7:0] z,
     );
 
-    controller_4_display i_controller_4_display(
-        .a(a),
-        .b(b),
-        .d(out),
-        .c(co),
-        .clk(clk)
-    );
+    assign z = a * b;
     
 endmodule
